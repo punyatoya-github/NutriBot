@@ -143,7 +143,7 @@ Running these tests confirms that:
 
 ## **License 📜**
 
-This project is licensed under the Punyatoya Mohanty’s Non-Commercial License. See the LICENSE file for details.
+This project is licensed under the Punyatoya Mohanty’s Non-Commercial License. See the [LICENSE](LICENSE.md) file for details.
 
 ---
 
