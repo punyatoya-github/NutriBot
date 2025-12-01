@@ -125,13 +125,13 @@ Running these tests confirms that:
 ### **Web Application Interface**
 
 * **Upload Image & Select Workflow**  
-  **![Landing Page](screenshots/NutriBot_App.png)**  
+  **![Landing Page](screenshots/NutriBot_App2.png)**  
     
     
 * **Recipe Suggestions Example**  
-  **![Recipe ideas](screenshots/App_1.png)**  
+  **![Recipe ideas](screenshots/NutriBot_App3.png)**  
 * **Nutritional Analysis Example**  
-  **![Food_Analysis](screenshots/App_2.png)**
+  **![Food_Analysis](screenshots/NutriBot_App4.png)**
 
 ---
 
