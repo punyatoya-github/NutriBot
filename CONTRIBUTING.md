@@ -1,14 +1,14 @@
 ### **Contributing Guide**
 
-Thank you for your interest in contributing to DocChat. This document explains how to report issues, propose changes, and submit code so we can collaborate efficiently and keep the project high quality.
+Thank you for your interest in contributing to NutriBot. This document explains how to report issues, propose changes, and submit code so we can collaborate efficiently and keep the project high quality.
 
 ---
 
 ### **✨ Getting started**
 
 1. Fork the repository and clone your fork:  
-   * git clone https://github.com/punyatoya-github/docchat.git  docchat
-   * cd docchat  
+   * git clone https://github.com/punyatoya-github/nutribot.git  nutribot
+   * cd nutribot 
 2. Create a feature branch:  
    * git checkout \-b feat/my-feature  
 3. Create a Python 3.11 virtual environment and install dependencies:  
@@ -172,4 +172,4 @@ Backwards compatibility, potential follow-ups.
 
 ---
 
-Thank you — your contributions make DocChat better. 
+Thank you — your contributions make NutriBot better. 
