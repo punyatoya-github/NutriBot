@@ -36,9 +36,9 @@ AI NutriBot is a smart dietary assistant powered by multimodal AI and multi-agen
 
 * **AI Models**:
 
-  * Meta Llama 3.2 90B Vision Instruct (multimodal image-text reasoning)  
-  * IBM Watsonx.ai (ingredient detection & nutritional analysis)  
-  * Granite 3.1 (experimental agent for extended reasoning)  
+  * OpenAI gpt-4.1-mini (multimodal image-text reasoning)  
+  * OpenAI gpt-4o-mini (ingredient detection & nutritional analysis)  
+      
 * **Frameworks & Libraries**:
 
   * [CrewAI](https://github.com/joaomdmoura/crewai) – Multi-agent orchestration  
