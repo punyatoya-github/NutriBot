@@ -16,15 +16,21 @@ dietary_filtering_task:
 
 nutrient_analysis_task:
   description: >
-    Provide a detailed breakdown of key nutrients such as protein, carbohydrates, fats, vitamins, and minerals based on {uploaded_image}; 
-    as well the caloric content of the food. Ends with a health evaluation for the dish.
+    Provide a detailed breakdown of key nutrients such as protein, carbohydrates, fats, vitamins, and minerals based on {uploaded_image}
+    (one or more images separated by '|', treat them as a single meal); as well the caloric content of the food, including a per-item calorie breakdown.
+    Ends with a health evaluation for the dish: an overall health score from 0 to 100, a few short points on what is working,
+    a few short actionable suggestions to improve it, and a one-paragraph summary.
   agent: nutrient_analysis_agent
   expected_output: >
-    Nutrient analysis based on the calorie estimation.
+    Nutrient analysis based on the calorie estimation, including per-item calories, total macros in grams,
+    health_score (0-100), health_strengths, health_improvements and health_evaluation.
 
 recipe_suggestion_task:
   description: >
-    Generate recipe ideas using the filtered ingredients and ensure they fit within the user’s calorie goal and dietary restrictions.
+    Generate 3 to 4 recipe ideas using the filtered ingredients and ensure they fit within the user’s calorie goal and dietary restrictions.
+    For every recipe give a title, the ingredient list, the method as an ordered list of short steps,
+    calories per serving, total time in minutes and the number of servings.
   agent: recipe_suggestion_agent
   expected_output: >
-    Suggested recipes based on the filtered ingredients.
+    Suggested recipes based on the filtered ingredients, each with title, ingredients, steps,
+    calorie_estimate, cook_time_minutes and servings.

@@ -9,15 +9,11 @@ from src.tools import (
     DietaryFilterTool,
     NutrientAnalysisTool
 )
-from ibm_watsonx_ai import Credentials, APIClient
-from src.models import RecipeSuggestionOutput, NutrientAnalysisOutput 
+from src.models import RecipeSuggestionOutput, NutrientAnalysisOutput
+from src.tools import TEXT_MODEL
 
-credentials = Credentials(
-                   url = "https://us-south.ml.cloud.ibm.com",
-                   # api_key = "<YOUR_API_KEY>" # Normally you'd put an API key here, but we've got you covered here
-                  )
-client = APIClient(credentials)
-project_id = "skills-network"
+# CrewAI agents use OpenAI by default; make the model explicit and configurable.
+os.environ.setdefault("OPENAI_MODEL_NAME", TEXT_MODEL)
 
 # Get the absolute path to the config directory
 CONFIG_DIR = os.path.join(os.path.dirname(__file__), "config")
@@ -27,9 +23,16 @@ class BaseNutriBotCrew:
     agents_config_path = os.path.join(CONFIG_DIR, 'agents.yaml')
     tasks_config_path = os.path.join(CONFIG_DIR, 'tasks.yaml')
     
-    def __init__(self, image_data, dietary_restrictions: str = None):
+    def __init__(self, image_data, dietary_restrictions: str = None, on_task_done=None):
+        """
+        :param image_data: image path(s); several paths are joined with '|'.
+        :param dietary_restrictions: free-text restrictions, e.g. "vegan, nut-free".
+        :param on_task_done: optional callable invoked with each finished TaskOutput
+                             (used by the UI to show real progress).
+        """
         self.image_data = image_data
         self.dietary_restrictions = dietary_restrictions
+        self.on_task_done = on_task_done
 
         with open(self.agents_config_path, 'r') as f:
             self.agents_config = yaml.safe_load(f)
@@ -151,7 +154,8 @@ class NutriBotRecipeCrew(BaseNutriBotCrew):
             agents=agents,
             tasks=tasks,
             process=Process.sequential,
-            verbose=True
+            verbose=True,
+            task_callback=self.on_task_done
         )
 
 
@@ -172,5 +176,6 @@ class NutriBotAnalysisCrew(BaseNutriBotCrew):
             agents=agents,
             tasks=tasks,
             process=Process.sequential,
-            verbose=True
+            verbose=True,
+            task_callback=self.on_task_done
         )
